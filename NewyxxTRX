@@ -5,7 +5,7 @@
 				local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xwel33/hud/main/gui"))()
 				local NotifyLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/xwel33/hud/main/Notification"))()
 				Library.theme.accentcolor = Color3.fromRGB(0, 204, 255)
-				local Window = Library:CreateWindow("GAY PORN", Vector2.new(200, 500), Enum.KeyCode.RightControl)
+				local Window = Library:CreateWindow("GAY PORN", Vector2.new(600, 400), Enum.KeyCode.RightControl)
 
 				local GetService =
 					setmetatable(
