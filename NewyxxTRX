@@ -1,0 +1,430 @@
+				repeat
+					wait()
+				until game:IsLoaded()
+
+				local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xwel33/hud/main/gui"))()
+				local NotifyLib = loadstring(game:HttpGet("https://raw.githubusercontent.com/xwel33/hud/main/Notification"))()
+				Library.theme.accentcolor = Color3.fromRGB(0, 204, 255)
+				local Window = Library:CreateWindow("GAY PORN", Vector2.new(200, 500), Enum.KeyCode.RightControl)
+
+				local GetService =
+					setmetatable(
+					{},
+					{
+						__index = function(self, key)
+							return game:GetService(key)
+						end
+					}
+				)                
+				
+				
+				
+				local loadscreen2 = Window:CreateTab("Average TRX")
+				local antilock63 = loadscreen2:CreateSector("Velocity Spoofer Desync", "left")
+
+                local oldVelocityxx = 0
+                local oldVelocityzz = 0
+                local oldVelocityyy = 0
+                local randomxx = 0
+                local randomzz = 0
+                local randomyy = 0
+                local randomangle = 180
+
+                function RandomNumberRange(a)
+                    return math.random(-a * 100, a * 100) / 100
+                end
+
+                function RandomVectorRange(a, b, c)
+                    return Vector3.new(RandomNumberRange(a), RandomNumberRange(b), RandomNumberRange(c))
+                end
+
+
+                checkcaller = checkcaller
+                newcclosure = newcclosure
+                hookmetamethod = hookmetamethod
+                local Powervel = 16384
+                local velocitywalk = false
+                local spinXD = false
+                local velocitytype = "Custom"
+                local notifyvel = false
+                local Velmultiplier = 1.5
+                local Notificationstype2 = "Roblox"
+                local BruhXD = game:GetService("RunService")
+                local LocalPlayer = game:GetService("Players").LocalPlayer
+                local Bullshit = LocalPlayer:GetMouse()
+
+                local velocityball = Instance.new("Part", game.Workspace)
+                velocityball.Name = "velocityballXDD"
+                velocityball.Anchored = true
+                velocityball.CanCollide = false
+                velocityball.Transparency = 1
+                velocityball.Parent = game.Workspace
+                velocityball.Shape = Enum.PartType.Ball
+                velocityball.Size = Vector3.new(5, 5, 5)
+                velocityball.Color = Color3.fromRGB(0, 140, 175)
+                velocityball.Material = "ForceField"
+
+                local enablevelo =
+                    antilock63:AddToggle(
+                    "Enable",
+                    false,
+                    function(Boolean)
+                        velocitywalk = Boolean
+
+                        if velocitywalk == true and notifyvel == true and Notificationstype2 == "Meff" then
+                            NotifyLib.prompt("GAY PORN", "Enabled", 0.5)
+                        end
+                        if velocitywalk == false and notifyvel == true and Notificationstype2 == "Meff" then
+                            NotifyLib.prompt("GAY PORN", "Disabled", 0.5)
+                        end
+                        if velocitywalk == true and notifyvel == true and Notificationstype2 == "Roblox" then
+                            game.StarterGui:SetCore(
+                                "SendNotification",
+                                {
+                                    Title = "Newyxx trx user",
+                                    Text = "Enabled",
+                                    Icon = "",
+                                    Duration = 1
+                                }
+                            )
+                        end
+                        if velocitywalk == false and notifyvel == true and Notificationstype2 == "Roblox" then
+                            game.StarterGui:SetCore(
+                                "SendNotification",
+                                {
+                                    Title = "Newyxx trx user",
+                                    Text = "Disabled",
+                                    Icon = "",
+                                    Duration = 1
+                                }
+                            )
+                        end
+                    end
+                )
+
+                enablevelo:AddKeybind()
+
+                local DesyncTypes = {}
+                game:GetService("RunService").Heartbeat:Connect(
+                    function()
+                        if velocitywalk == true then
+                            DesyncTypes[1] = LocalPlayer.Character.HumanoidRootPart.CFrame
+                            DesyncTypes[2] = LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity
+                            if spinXD == true then
+                                local SpoofThis = LocalPlayer.Character.HumanoidRootPart.CFrame
+
+                                SpoofThis = SpoofThis * CFrame.new(Vector3.new(0, 0, 0))
+                                SpoofThis =
+                                    SpoofThis *
+                                    CFrame.Angles(
+                                        math.rad(RandomNumberRange(randomangle)),
+                                        math.rad(RandomNumberRange(randomangle)),
+                                        math.rad(RandomNumberRange(randomangle))
+                                    )
+
+                                LocalPlayer.Character.HumanoidRootPart.CFrame = SpoofThis
+                            end
+
+                            if velocitytype == "Custom" then
+                                LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity =
+                                    Vector3.new(oldVelocityxx, oldVelocityyy, oldVelocityzz) * Powervel
+                            elseif velocitytype == "NoVelocity" then
+                                LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity = Vector3.new(1, 1, 1) * 0
+                            elseif velocitytype == "LookVector" then
+                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Velocity =
+                                    game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector *
+                                    Powervel
+                            elseif velocitytype == "Random" then
+                                LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity =
+                                    Vector3.new(randomxx, randomyy, randomzz) * Powervel
+                            elseif velocitytype == "Underground" then
+                                LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity =
+                                    Vector3.new(0, -10, 0) * Powervel
+                            elseif velocitytype == "Up" then
+                                LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity =
+                                    Vector3.new(0, 10, 0) * Powervel
+                            elseif velocitytype == "MultiPlier" then
+                                local hrp = game.Players.LocalPlayer.Character.HumanoidRootPart
+                                hrp.Velocity = Vector3.new(hrp.Velocity.X, 0, hrp.Velocity.Z) * (Velmultiplier)
+                            end
+
+                            game:GetService("RunService").RenderStepped:Wait()
+
+                            LocalPlayer.Character.HumanoidRootPart.CFrame = DesyncTypes[1]
+                            LocalPlayer.Character.HumanoidRootPart.AssemblyLinearVelocity = DesyncTypes[2]
+                        end
+                    end
+                )
+
+                local XDDDDDD = nil
+                XDDDDDD =
+                    hookmetamethod(
+                    game,
+                    "__index",
+                    newcclosure(
+                        function(self, key)
+                            if not cframetpdesync == true or enablehitpartdesync == true then
+                                if not checkcaller() then
+                                    if
+                                        key == "CFrame" and velocitywalk == true and velocitytype == "Custom" and
+                                            LocalPlayer.Character and
+                                            LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and
+                                            LocalPlayer.Character:FindFirstChild("Humanoid") and
+                                            LocalPlayer.Character:FindFirstChild("Humanoid").Health > 0
+                                     then
+                                        if self == LocalPlayer.Character.HumanoidRootPart then
+                                            return DesyncTypes[1] or CFrame.new()
+                                        elseif self == LocalPlayer.Character.Head then
+                                            return DesyncTypes[1] and
+                                                DesyncTypes[1] +
+                                                    Vector3.new(
+                                                        0,
+                                                        LocalPlayer.Character.HumanoidRootPart.Size / 2 + 0.5,
+                                                        0
+                                                    ) or
+                                                CFrame.new()
+                                        end
+                                    end
+                                end
+                            end
+                            return XDDDDDD(self, key)
+                        end
+                    )
+                )
+
+                RunService.RenderStepped:Connect(
+                    function()
+                        if velocitywalk == true and velocitytype == "Random" then
+                            while velocitywalk == true do
+                                randomxx = math.random(-10, 10)
+                                randomyy = math.random(-10, 10)
+                                randomzz = math.random(-10, 10)
+                                task.Wait()
+                            end
+                        end
+                    end
+                )
+
+                local niggacumrefreshrate2 = 0.1
+                local velocitynotifi =
+                    antilock63:AddToggle(
+                    "Notifications",
+                    false,
+                    function(Boolean)
+                        notifyvel = Boolean
+                    end
+                )
+                local notificationtyp22 =
+                    antilock63:AddDropdown(
+                    "Notifications Type",
+                    {"Roblox", "Meff"},
+                    "Roblox",
+                    false,
+                    function(Value)
+                        Notificationstype2 = Value
+                    end
+                )
+                local uitextdes = false
+                local uitextable =
+                    antilock63:AddToggle(
+                    "Ui Text",
+                    false,
+                    function(Boolean)
+                        uitextdes = Boolean
+                        if uitextdes == true then
+                            FrameforreXD.Visible = true
+                        end
+                        if uitextdes == false then
+                            FrameforreXD.Visible = false
+                        end
+                        while uitextdes == true do
+                            if velocitywalk == true and uitextdes == true then
+                                desyncingxd.Visible = true
+                                nodesync.Visible = false
+                            end
+                            if velocitywalk == false and uitextdes == true then
+                                desyncingxd.Visible = false
+                                nodesync.Visible = true
+                            end
+                            task.wait()
+                        end
+                    end
+                )
+                local velocitytypetype =
+                    antilock63:AddDropdown(
+                    "Type",
+                    {"Custom", "MultiPlier", "NoVelocity", "Random", "Underground", "Up", "LookVector"},
+                    "Custom",
+                    false,
+                    function(Value)
+                        velocitytype = Value
+                    end
+                )
+
+                local powervel2 =
+                    antilock63:AddSlider(
+                    "Power",
+                    0,
+                    10,
+                    100,
+                    1,
+                    function(Value)
+                        Powervel = Value
+                    end
+                )
+
+                antilock63:AddLabel("-Custom-")
+                local velocityxrandom2 =
+                    antilock63:AddSlider(
+                    "Velocity_X",
+                    -100,
+                    0,
+                    100,
+                    1,
+                    function(Value)
+                        oldVelocityxx = Value
+                    end
+                )
+                local velocityyrandom2 =
+                    antilock63:AddSlider(
+                    "Velocity_Y",
+                    -100,
+                    0,
+                    100,
+                    1,
+                    function(Value)
+                        oldVelocityyy = Value
+                    end
+                )
+                local velocityzrandom2 =
+                    antilock63:AddSlider(
+                    "Velocity_Z",
+                    -100,
+                    0,
+                    100,
+                    1,
+                    function(Value)
+                        oldVelocityzz = Value
+                    end
+                )
+
+                if developermode == "True" then
+                    antilock63:AddLabel("-Velocity MultiPlier-")
+
+                    local multipliertype =
+                        antilock63:AddSlider(
+                        "MultiPlier",
+                        1,
+                        1.5,
+                        10,
+                        10,
+                        function(Value)
+                            Velmultiplier = Value
+                        end
+                    )
+
+                    antilock63:AddLabel("-Blatant-")
+                    local velocityxrandom = false
+                    local randomdxx =
+                        antilock63:AddToggle(
+                        "Random_X",
+                        false,
+                        function(Boolean)
+                            velocityxrandom = Boolean
+                            while velocityxrandom == true do
+                                velocityxrandom2:Set(math.random(-10, 10))
+                                task.wait(niggacumrefreshrate2)
+                            end
+                            if velocityxrandom == false then
+                                velocityxrandom2:Set(0)
+                                task.wait(0.1)
+                            end
+                        end
+                    )
+                    local velocityyrandom = false
+                    local randomdyy =
+                        antilock63:AddToggle(
+                        "Random_Y",
+                        false,
+                        function(Boolean)
+                            velocityyrandom = Boolean
+                            while velocityyrandom == true do
+                                velocityyrandom2:Set(math.random(-10, 10))
+                                task.wait(niggacumrefreshrate2)
+                            end
+                            if velocityyrandom == false then
+                                velocityyrandom2:Set(0)
+                                task.wait(0.1)
+                            end
+                        end
+                    )
+                    local velocityzrandom = false
+                    local randomdzz =
+                        antilock63:AddToggle(
+                        "Random_Z",
+                        false,
+                        function(Boolean)
+                            velocityzrandom = Boolean
+                            while velocityzrandom == true do
+                                velocityzrandom2:Set(math.random(-10, 10))
+                                task.wait(niggacumrefreshrate2)
+                            end
+                            if velocityzrandom == false then
+                                velocityzrandom2:Set(0)
+                                task.wait(0.1)
+                            end
+                        end
+                    )
+                    local powervel2toggle = false
+                    local randompowerr =
+                        antilock63:AddToggle(
+                        "Random power",
+                        false,
+                        function(Boolean)
+                            powervel2toggle = Boolean
+                            while powervel2toggle == true do
+                                powervel2:Set(math.random(10, 1000))
+                                task.wait(niggacumrefreshrate2)
+                            end
+                            if powervel2toggle == false then
+                                powervel2:Set(10)
+                                task.wait(0.1)
+                            end
+                        end
+                    )
+                    local velrefreshh =
+                        antilock63:AddSlider(
+                        "Refresh Rate",
+                        0,
+                        0.1,
+                        2,
+                        100,
+                        function(Value)
+                            niggacumrefreshrate2 = Value
+                        end
+                    )
+
+                    antilock63:AddLabel("-Blatant2-")
+
+                    local nocolisionsaa = false
+                    local nocollisionsvel =
+                        antilock63:AddToggle(
+                        "No Collisions",
+                        false,
+                        function(Boolean)
+                            nocolisionsaa = Boolean
+                            if velocitywalk == true and nocolisionsaa == true then
+                                game.Players.LocalPlayer.Character.Head.CanCollide = false
+                                game.Players.LocalPlayer.Character.UpperTorso.CanCollide = false
+                                game.Players.LocalPlayer.Character.LowerTorso.CanCollide = false
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = false
+                            end
+                            if velocitywalk == false and nocolisionsaa == false then
+                                game.Players.LocalPlayer.Character.Head.CanCollide = true
+                                game.Players.LocalPlayer.Character.UpperTorso.CanCollide = true
+                                game.Players.LocalPlayer.Character.LowerTorso.CanCollide = true
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CanCollide = true
+                            end
+                        end
+                    )
+                end
